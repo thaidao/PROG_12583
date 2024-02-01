@@ -70,11 +70,6 @@ print('Hello and welcome to the online fruit stand.\n'\
 # For each item tell them the price and ask them how many they want (they can say 0 if they don't want any).
 
 print('First we have %s for $%0.2f'% (ITEM1,fItemUnitPrice_1))
-
-$1.20
-print("| PRODUCT       | QUANTITY | UNIT PRICE | TOTAL PRICE|")
-print("PRODUCT", "QUANTITY",sep="|")
-
 print("How many would you like?")
 iItemQty_1 = int(input())
 fItemUnitTotalPrice_1 = iItemQty_1*fItemUnitPrice_1
@@ -128,6 +123,25 @@ print('==================================================================')
 print("",STORE_NAME,"Customer:" + sCustomerName,"", sep='|')
 print("",STORE_WEBSITE,sCustomerPhoneNo,"", sep='|')
 print("","\t\t",sCustomerPostCode,"", sep='|')
+
+print("|==============================================================================|")
+tempStr = "|{:<20}{:s} | Customer: {:<18} {:s}|"
+prtStr = tempStr.format("","The Fruit Stand","",'Sara Taylor')
+print(80 - len(prtStr)) # for debug purpose
+print(prtStr)
+
+tempStr = "|{:<12}{:s} | {:<27} {:s}|"
+prtStr = tempStr.format("","www.davesfruitstand.com","",'905-555-1234')
+print(80 - len(prtStr)) # for debug purpose
+print(prtStr)
+
+tempStr = "|{:<35}{:s} | {:<32} {:s}|"
+prtStr = tempStr.format("","","",'L8M 1P9')
+print(80 - len(prtStr)) # for debug purpose
+print(prtStr)
+
+print("|==============================================================================|")
+
 
 
 # print('')
