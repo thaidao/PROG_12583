@@ -70,6 +70,11 @@ print('Hello and welcome to the online fruit stand.\n'\
 # For each item tell them the price and ask them how many they want (they can say 0 if they don't want any).
 
 print('First we have %s for $%0.2f'% (ITEM1,fItemUnitPrice_1))
+
+$1.20
+print("| PRODUCT       | QUANTITY | UNIT PRICE | TOTAL PRICE|")
+print("PRODUCT", "QUANTITY",sep="|")
+
 print("How many would you like?")
 iItemQty_1 = int(input())
 fItemUnitTotalPrice_1 = iItemQty_1*fItemUnitPrice_1
