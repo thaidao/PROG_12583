@@ -141,7 +141,27 @@ print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
 print("|==============================================================================|")
+str1,str2,str3,str4 = "PRODUCT","QUANTITY","UNIT PRICE","TOTAL PRICE"
+prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
+		'|{0:^13}'.format(str3) + '|{0:^13}|'.format(str4)
+print(prtStr)
 
+# ITEM1
+str1,str2,str3,str4 = "Apples","23","0.50","11.50"
+prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
+		'|{0:>13}'.format(str3) + '|{0:>13}|'.format(str4)
+print(prtStr)
+
+# ITEM2
+str1,str2,str3,str4 = "Oranges","47","0.65","30.55"
+prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
+		'|{0:>13}'.format(str3) + '|{0:>13}|'.format(str4)
+print(prtStr)
+
+print("|----------------------------------------------------------------|-------------|")
+
+#TBD
+print("|==============================================================================|")
 
 
 # print('')
