@@ -119,25 +119,25 @@ fDiscountAmount = float(input())
 # g. The amount of the discount in dollars.
 # h. The final price.
 
-print('==================================================================')
-print("",STORE_NAME,"Customer:" + sCustomerName,"", sep='|')
-print("",STORE_WEBSITE,sCustomerPhoneNo,"", sep='|')
-print("","\t\t",sCustomerPostCode,"", sep='|')
+# print('==============================================================================')
+# print("",STORE_NAME,"Customer:" + sCustomerName,"", sep='|')
+# print("",STORE_WEBSITE,sCustomerPhoneNo,"", sep='|')
+# print("","\t\t",sCustomerPostCode,"", sep='|')
 
-print("|==============================================================================|")
-tempStr = "|{:<20}{:s} | Customer: {:<18} {:s}|"
-prtStr = tempStr.format("","The Fruit Stand","",'Sara Taylor')
-print(80 - len(prtStr)) # for debug purpose
+print("===============================================================================")
+tempStr = "|{:<20}{:s} | Customer: {:<17} {:s} |"
+prtStr = tempStr.format("", STORE_NAME,"", sCustomerName)
+#print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
-tempStr = "|{:<12}{:s} | {:<27} {:s}|"
-prtStr = tempStr.format("","www.davesfruitstand.com","",'905-555-1234')
-print(80 - len(prtStr)) # for debug purpose
+tempStr = "|{:<12}{:s} | {:<26} {:s} |"
+prtStr = tempStr.format("", STORE_WEBSITE,"", sCustomerPhoneNo)
+#print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
-tempStr = "|{:<35}{:s} | {:<32} {:s}|"
-prtStr = tempStr.format("","","",'L8M 1P9')
-print(80 - len(prtStr)) # for debug purpose
+tempStr = "|{:<35}{:s} | {:<31} {:s} |"
+prtStr = tempStr.format("","","", sCustomerPostCode)
+#print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
 print("|==============================================================================|")
@@ -165,39 +165,3 @@ prtStr='|{0:>63} '.format(str1) + '|{0:>13}|'.format(str2)
 print(prtStr)
 
 print("|==============================================================================|")
-
-
-# print('')
-# | The Fruit Stand | Customer: Sara Taylor |
-# | www.davesfruitstand.com | 905-555-1234 |
-# | | L8M 1P9 |
-# |================================================================ |
-# | PRODUCT | QUANTITY | UNIT PRICE | TOTAL PRICE|
-# | Apples | 23 | 0.50 | 11.50 |
-# | Oranges | 47 | 0.65 | 30.55 |
-# | Bananas | 0 | 0.23 | 0.00 |
-# | Grapefruit | 124 | 0.99 | 122.76 |
-# |
-# |
-# |
-# Dragon Fruit | 10 |
-# Sub
-# 1.99
-# Total 1
-# |
-# |
-# |
-# 19.90
-# 184.71
-# |
-# |
-# |
-# | H.S.T | 24.01 |
-# | Sub Total 2 | 208.72 |
-# | Discount (10%) | 20.87 |
-# | Amount Due | 187.85 |
-# |================================================================ |
-
-
-
-# #@todo
