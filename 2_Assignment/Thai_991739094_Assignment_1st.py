@@ -9,9 +9,13 @@ sCustomerPhoneNo =""
 sCustomerPostCode =""
 
 # [TESTING] Initial for testing purpose only
-sCustomerName = "Sara Taylor"
-sCustomerPhoneNo ="905-555-1234"
-sCustomerPostCode ="L8M 1P9"
+# sCustomerName = "Sara Taylor"
+# sCustomerPhoneNo ="905-555-1234"
+# sCustomerPostCode ="L8M 1P9"
+
+sCustomerName = ""
+sCustomerPhoneNo =""
+sCustomerPostCode =""
 
 # Items for sale
 # Name
@@ -55,9 +59,10 @@ fAmountDue = 0
 # 1. Greet the user, tell them what store they are at, 
 # and ask for their name, phone number, and postal code.
 
-print('Hello and welcome to the online fruit stand.\n'\
-    'Please tell us your name, phone number, and postal code')
-
+print('Hello and welcome to the online fruit stand.')
+sCustomerName = input("Please tell us your name:")
+sCustomerPhoneNo = input("Please tell us your phone number:")
+sCustomerPostCode = input("Please tell us your postal code:")
 
 #==================REQUIRMENT_2================================================
 # 2. Present the user with a list of 5 different items for sale in your store one at a time, 
@@ -107,18 +112,27 @@ fDiscountPercentage = float(input())
 # g. The amount of the discount in dollars.
 # h. The final price.
 print("===============================================================================")
-tempStr = "|{:<20}{:s} | Customer: {:<17} {:s} |"
-prtStr = tempStr.format("", STORE_NAME,"", sCustomerName)
+# Print line 1st
+if len(sCustomerName) > 30: #Truncate long customer name
+	sCustomerName = sCustomerName[:30]
+prtStr = "|" + format(STORE_NAME + " |", '>37s') + \
+	" Customer:" + format(sCustomerName + " |",'>32s')
 #print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
-tempStr = "|{:<12}{:s} | {:<26} {:s} |"
-prtStr = tempStr.format("", STORE_WEBSITE,"", sCustomerPhoneNo)
+# Print line 2nd
+if len(sCustomerPhoneNo) > 11: #Truncate long phone number
+	sCustomerPhoneNo = sCustomerPhoneNo[:11]
+prtStr = "|" + format(STORE_WEBSITE + " |", '>37s') + \
+		format(sCustomerPhoneNo + " |",'>42s')
 #print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
-tempStr = "|{:<35}{:s} | {:<31} {:s} |"
-prtStr = tempStr.format("","","", sCustomerPostCode)
+# Print line 3rd
+if len(sCustomerPostCode) > 7: #Truncate long postal code
+	sCustomerPostCode = sCustomerPostCode[:7]
+prtStr = "|" + format("|", '>37s') + \
+		format(sCustomerPostCode + " |",'>42s')
 #print(80 - len(prtStr)) # for debug purpose
 print(prtStr)
 
@@ -196,14 +210,3 @@ prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
 print("|==============================================================================|")
-else
-
-
-
-False	await	else	import	pass
-None	break	except	in	raise
-True	class	finally	is	return
-and	continue	for	lambda	try
-as	def	from	nonlocal	while
-assert	del	global	not	with
-async	elif	if	or	yield
