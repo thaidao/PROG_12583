@@ -60,9 +60,9 @@ fAmountDue = 0
 # and ask for their name, phone number, and postal code.
 
 print('Hello and welcome to the online fruit stand.')
-sCustomerName = input("Please tell us your name:")
-sCustomerPhoneNo = input("Please tell us your phone number:")
-sCustomerPostCode = input("Please tell us your postal code:")
+sCustomerName = input("Please tell us your name:").strip()
+sCustomerPhoneNo = input("Please tell us your phone number:").strip()
+sCustomerPostCode = input("Please tell us your postal code:").strip()
 
 #==================REQUIRMENT_2================================================
 # 2. Present the user with a list of 5 different items for sale in your store one at a time, 
@@ -99,6 +99,9 @@ fItemTotalPrice_5 = iItemQty_5*fItemUnitPrice_5
 print("What is your discount? (0 - 100 percent)")
 fDiscountPercentage = float(input())
 
+# Set zero discount when customer input out of range number
+if fDiscountPercentage < 0 or fDiscountPercentage > 100:
+	fDiscountPercentage = 0
 
 #==================REQUIRMENT_4================================================
 # 4. Then present the user with a receipt. The receipt should have the following information on it:
