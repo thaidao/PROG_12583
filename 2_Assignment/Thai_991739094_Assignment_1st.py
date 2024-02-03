@@ -33,7 +33,7 @@ fItemUnitPrice_1 = 0.50
 fItemUnitPrice_2 = 0.65
 fItemUnitPrice_3 = 0.23
 fItemUnitPrice_4 = 0.99
-fItemUnitPrice_5 = 0.99
+fItemUnitPrice_5 = 1.99
 
 # Total price
 fItemTotalPrice_1 = 0
@@ -51,18 +51,12 @@ fHST = 24.01
 fSubTotal_2 = 0
 fAmountDue = 0
 
-
 #==================REQUIRMENT_1================================================
 # 1. Greet the user, tell them what store they are at, 
 # and ask for their name, phone number, and postal code.
 
 print('Hello and welcome to the online fruit stand.\n'\
     'Please tell us your name, phone number, and postal code')
-
-# [DEBUG] temporally comment out 
-# sCustomerName = input("Your name:")
-# sCustomerPhoneNo = input("Your phone number:")
-# sCustomerPostCode = input("Your Postal Code:")
 
 
 #==================REQUIRMENT_2================================================
@@ -73,32 +67,26 @@ print('First we have %s for $%0.2f'% (ITEM1,fItemUnitPrice_1))
 print("How many would you like?")
 iItemQty_1 = int(input())
 fItemTotalPrice_1 = iItemQty_1*fItemUnitPrice_1
-#print(fItemTotalPrice_1)
 
-# print('First we have %s for $%0.2f'% (ITEM2,fItemUnitPrice_2))
-# print("How many would you like?")
-# iItemQty_2 = int(input())
-# fItemTotalPrice_2 = iItemQty_2*fItemUnitPrice_2
-# #print(fItemTotalPrice_2)
+print('First we have %s for $%0.2f'% (ITEM2,fItemUnitPrice_2))
+print("How many would you like?")
+iItemQty_2 = int(input())
+fItemTotalPrice_2 = iItemQty_2*fItemUnitPrice_2
 
-# print('First we have %s for $%0.2f'% (ITEM3,fItemUnitPrice_3))
-# print("How many would you like?")
-# iItemQty_3 = int(input())
-# fItemTotalPrice_3 = iItemQty_3*fItemUnitPrice_3
-# #print(fItemTotalPrice_3)
+print('First we have %s for $%0.2f'% (ITEM3,fItemUnitPrice_3))
+print("How many would you like?")
+iItemQty_3 = int(input())
+fItemTotalPrice_3 = iItemQty_3*fItemUnitPrice_3
 
-# print('First we have %s for $%0.2f'% (ITEM4,fItemUnitPrice_4))
-# print("How many would you like?")
-# iItemQty_4 = int(input())
-# fItemTotalPrice_4 = iItemQty_4*fItemUnitPrice_4
-# #print(fItemTotalPrice_4)
+print('First we have %s for $%0.2f'% (ITEM4,fItemUnitPrice_4))
+print("How many would you like?")
+iItemQty_4 = int(input())
+fItemTotalPrice_4 = iItemQty_4*fItemUnitPrice_4
 
-# print('First we have %s for $%0.2f'% (ITEM5,fItemUnitPrice_5))
-# print("How many would you like?")
-# iItemQty_5 = int(input())
-# fItemTotalPrice_5 = iItemQty_5*fItemUnitPrice_5
-# #print(fItemTotalPrice_5)
-
+print('First we have %s for $%0.2f'% (ITEM5,fItemUnitPrice_5))
+print("How many would you like?")
+iItemQty_5 = int(input())
+fItemTotalPrice_5 = iItemQty_5*fItemUnitPrice_5
 
 #==================REQUIRMENT_3================================================
 # 3. Ask them for the amount of the discount they get (from 0% to 100%). 
@@ -118,12 +106,6 @@ fDiscountPercentage = float(input())
 # f. The total with HST on a new line.
 # g. The amount of the discount in dollars.
 # h. The final price.
-
-# print('==============================================================================')
-# print("",STORE_NAME,"Customer:" + sCustomerName,"", sep='|')
-# print("",STORE_WEBSITE,sCustomerPhoneNo,"", sep='|')
-# print("","\t\t",sCustomerPostCode,"", sep='|')
-
 print("===============================================================================")
 tempStr = "|{:<20}{:s} | Customer: {:<17} {:s} |"
 prtStr = tempStr.format("", STORE_NAME,"", sCustomerName)
@@ -147,31 +129,31 @@ prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 print(prtStr)
 
 # ITEM1
-str1,str2,str3,str4 = ITEM1,iItemQty_1,fItemUnitPrice_1,fItemTotalPrice_1
+str1,str2,str3,str4 = ITEM1,iItemQty_1,'%0.2f'% fItemUnitPrice_1,'%0.2f'% fItemTotalPrice_1
 prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 		'|{0:>12} '.format(str3) + '|{0:>12} |'.format(str4)
 print(prtStr)
 
 # ITEM2
-str1,str2,str3,str4 = ITEM2,iItemQty_2,fItemUnitPrice_2,fItemTotalPrice_2
+str1,str2,str3,str4 = ITEM2,iItemQty_2,'%0.2f'% fItemUnitPrice_2,'%0.2f'% fItemTotalPrice_2
 prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 		'|{0:>12} '.format(str3) + '|{0:>12} |'.format(str4)
 print(prtStr)
 
 # ITEM3
-str1,str2,str3,str4 = ITEM3,iItemQty_3,fItemUnitPrice_3,fItemTotalPrice_3
+str1,str2,str3,str4 = ITEM3,iItemQty_3,'%0.2f'% fItemUnitPrice_3,'%0.2f'% fItemTotalPrice_3
 prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 		'|{0:>12} '.format(str3) + '|{0:>12} |'.format(str4)
 print(prtStr)
 
 # ITEM4
-str1,str2,str3,str4 = ITEM4,iItemQty_4,fItemUnitPrice_4,fItemTotalPrice_4
+str1,str2,str3,str4 = ITEM4,iItemQty_4,'%0.2f'% fItemUnitPrice_4,'%0.2f'% fItemTotalPrice_4
 prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 		'|{0:>12} '.format(str3) + '|{0:>12} |'.format(str4)
 print(prtStr)
 
 # ITEM5
-str1,str2,str3,str4 = ITEM5,iItemQty_5,fItemUnitPrice_5,fItemTotalPrice_5
+str1,str2,str3,str4 = ITEM5,iItemQty_5,'%0.2f'% fItemUnitPrice_5,'%0.2f'% fItemTotalPrice_5
 prtStr='|{0:>35} '.format(str1) + '|{0:^13}'.format(str2)+\
 		'|{0:>12} '.format(str3) + '|{0:>12} |'.format(str4)
 print(prtStr)
@@ -179,6 +161,10 @@ print(prtStr)
 # Calculate Subtotal1
 fSubTotal_1 = fItemTotalPrice_1+fItemTotalPrice_2+fItemTotalPrice_3+\
 	fItemTotalPrice_4+fItemTotalPrice_5
+
+# Handle exception
+if fSubTotal_1 <= 0:
+	fHST = 0
 
 # Calculate Subtotal2
 fSubTotal_2 = fSubTotal_1 + fHST
@@ -188,25 +174,36 @@ fDiscountAmount = fDiscountPercentage*fSubTotal_2/100
 
 print("|----------------------------------------------------------------|-------------|")
 # TOTAL
-str1,str2 = "Sub total 1",fSubTotal_1
+str1,str2 = "Sub total 1",'%0.2f'%fSubTotal_1
 prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
-str1,str2 = "H.S.T",fHST
+str1,str2 = "H.S.T",'%0.2f'%fHST
 prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
-str1,str2 = "Sub total 2",fSubTotal_2
+str1,str2 = "Sub total 2",'%0.2f'%fSubTotal_2
 prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
-str1 = "Discount (" + str(fDiscountPercentage) + "%)"
-str2 = fDiscountAmount
+str1 = "Discount (" + '%d'%fDiscountPercentage + "%)"
+str2 = '%0.2f'%fDiscountAmount   # convert float to integer
 prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
-str1,str2 = "Amount Due", fSubTotal_2-fDiscountAmount
+str1,str2 = "Amount Due", '%0.2f'%(fSubTotal_2-fDiscountAmount)
 prtStr='|{0:>63} '.format(str1) + '|{0:>12} |'.format(str2)
 print(prtStr)
 
 print("|==============================================================================|")
+else
+
+
+
+False	await	else	import	pass
+None	break	except	in	raise
+True	class	finally	is	return
+and	continue	for	lambda	try
+as	def	from	nonlocal	while
+assert	del	global	not	with
+async	elif	if	or	yield
