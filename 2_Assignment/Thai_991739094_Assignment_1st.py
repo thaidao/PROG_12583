@@ -13,10 +13,6 @@ sCustomerPostCode =""
 # sCustomerPhoneNo ="905-555-1234"
 # sCustomerPostCode ="L8M 1P9"
 
-sCustomerName = ""
-sCustomerPhoneNo =""
-sCustomerPostCode =""
-
 # Items for sale
 # Name
 ITEM1 = "Apples"
