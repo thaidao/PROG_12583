@@ -1,0 +1,32 @@
+statement: the instructions
+expression: is a combination of values, variables, operators, and calls to functions
+operator: add, substract, multiply, divide ..
+operand
+block: group of statements
+
+compiler
+interpreter:
+assembler:
+linker:
+psuedo code: fake code, mixing source code and nature language
+
+indentation:
+comment:
+comment out:
+string literal:
+case-sensitive
+underscore notation
+camel case
+implicit conversion
+explicit conversion
+syntax error
+runtime error
+logic error
+arithmetic operators
+compound assigment: x += 1
+floating-point number:
+alias
+prompt
+variable
+build-in method
+boolean type:

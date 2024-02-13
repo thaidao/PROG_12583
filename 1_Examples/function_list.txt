@@ -1,0 +1,14 @@
+print
+type
+int()
+float()
+str()
+round(x,2) 		# present 2 digits after decimal point
+ceil()
+floor()
+pow(num,pow)
+sqrt(num)		# return square root of num
+input
+input().split(",")
+len("string")
+string = ",".join(strList)

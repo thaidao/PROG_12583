@@ -1,0 +1,36 @@
+# Declare list
+#listA = []
+listA = [22,33,44]
+
+#insert
+listA.insert(0,"A")
+print(listA)
+
+#append
+listA.append("Thai")
+print(listA)
+
+#pop
+listA.pop()
+print(listA)
+
+listA.pop(0)
+print(listA)
+
+#remove
+listA.remove(22)
+print(listA)
+
+#index
+listA.index(44)
+
+#count
+print(listA)
+#reverse
+listA.reverse()
+print(listA)
+
+#sort
+listA = [1,4,"string",3]
+listA.sort()
+print(listA)
