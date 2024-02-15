@@ -1,0 +1,6 @@
+prtStr1 = "{:<40}".format("Test 1") + "{:<40}".format("Test your resilience")
+print(prtStr1)
+prtStr1 = "{:>40}".format("Test 1") + "{:>40}".format("Test your resilience")
+print(prtStr1)
+prtStr1 = "{:^40}".format("Test 1") + "{:^40}".format("Test your resilience")
+print(prtStr1)

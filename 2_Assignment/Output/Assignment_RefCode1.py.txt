@@ -1,0 +1,112 @@
+# Remind that, this code is a part of my final source code.
+# It related to the print out section what I have shown to you.
+# 
+
+customerName = "We're champion"
+customerPhone = "99999"
+customerPostCode = "12345"
+
+#dummy code for test only
+prodQty_1 = 10
+prodQty_2 = 20
+prodQty_3 = 30
+prodQty_4 = 40
+prodQty_5 = 50
+
+prodUnitPrice_1 = 0.50
+prodUnitPrice_2 = 0.65
+prodUnitPrice_3 = 0.23
+prodUnitPrice_4 = 0.99
+prodUnitPrice_5 = 1.99
+
+prodTotal_1 = prodQty_1*prodUnitPrice_1
+prodTotal_2 = prodQty_2*prodUnitPrice_2
+prodTotal_3 = prodQty_3*prodUnitPrice_3
+prodTotal_4 = prodQty_4*prodUnitPrice_4
+prodTotal_5 = prodQty_5*prodUnitPrice_5
+
+
+print("===============================================================================")
+# Print line 1st
+printOutStr = "|" + format("The Fruit Stand" + " |", '>37s') + " Customer:" + format(customerName + " |",'>32s')
+print(printOutStr)
+
+# Print line 2nd
+printOutStr = "|" + format("www.davesfruitstand.com" + " |", '>37s') + format(customerPhone + " |",'>42s')
+print(printOutStr)
+
+# Print line 3rd
+printOutStr = "|" + format("|", '>37s') + format(customerPostCode + " |",'>42s')
+print(printOutStr)
+
+print("|==============================================================================|")
+strPrtOut1,strPrtOut2 = "PRODUCT","QUANTITY"
+strPrtOut3,strPrtOut4 = "UNIT PRICE","TOTAL PRICE"
+printOutStr='|{0:>35} '.format(strPrtOut1) + "|" + strPrtOut2.center(13) + "|" + strPrtOut3.center(13) + "|" + strPrtOut4.center(13)+ "|"
+print(printOutStr)
+
+# PRODUCT1
+strPrtOut1,strPrtOut2,strPrtOut3,strPrtOut4 = "Apples",prodQty_1,'%0.2f'% prodUnitPrice_1,'%0.2f'% prodTotal_1
+printOutStr='|{0:>35} |'.format(strPrtOut1) + str(strPrtOut2).center(13)+\
+		'|{0:>12} '.format(strPrtOut3) + '|{0:>12} |'.format(strPrtOut4)
+print(printOutStr)
+
+# PRODUCT2
+strPrtOut1,strPrtOut2,strPrtOut3,strPrtOut4 = "Oranges",prodQty_2,'%0.2f'% prodUnitPrice_2,'%0.2f'% prodTotal_2
+printOutStr='|{0:>35} |'.format(strPrtOut1) + str(strPrtOut2).center(13)+\
+		'|{0:>12} '.format(strPrtOut3) + '|{0:>12} |'.format(strPrtOut4)
+print(printOutStr)
+
+# PRODUCT3
+strPrtOut1,strPrtOut2,strPrtOut3,strPrtOut4 = "Bananas",prodQty_3,'%0.2f'% prodUnitPrice_3,'%0.2f'% prodTotal_3
+printOutStr='|{0:>35} |'.format(strPrtOut1) + str(strPrtOut2).center(13)+\
+		'|{0:>12} '.format(strPrtOut3) + '|{0:>12} |'.format(strPrtOut4)
+print(printOutStr)
+
+# PRODUCT4
+strPrtOut1,strPrtOut2,strPrtOut3,strPrtOut4 = "GrapeFruit",prodQty_4,'%0.2f'% prodUnitPrice_4,'%0.2f'% prodTotal_4
+printOutStr='|{0:>35} |'.format(strPrtOut1) + str(strPrtOut2).center(13)+\
+		'|{0:>12} '.format(strPrtOut3) + '|{0:>12} |'.format(strPrtOut4)
+print(printOutStr)
+
+# PRODUCT5
+strPrtOut1,strPrtOut2,strPrtOut3,strPrtOut4 = "DragonFruit",prodQty_5,'%0.2f'% prodUnitPrice_5,'%0.2f'% prodTotal_5
+printOutStr='|{0:>35} |'.format(strPrtOut1) + str(strPrtOut2).center(13)+\
+		'|{0:>12} '.format(strPrtOut3) + '|{0:>12} |'.format(strPrtOut4)
+print(printOutStr)
+
+# Calculate Subtotal1
+subTotal_1 = 1000   # dummy data for test only
+
+hst = 25            # dummy data for test only
+# Calculate Subtotal2
+subTotal_2 = subTotal_1 + hst
+
+discontPercentage = 10 # dummy data for test
+# Calculate discount amount
+discountAmount = discontPercentage*subTotal_2/100
+
+print("|----------------------------------------------------------------|-------------|")
+# TOTAL
+strPrtOut1,strPrtOut2 = "Sub total 1",'%0.2f'%subTotal_1
+printOutStr='|{0:>63} '.format(strPrtOut1) + '|{0:>12} |'.format(strPrtOut2)
+print(printOutStr)
+
+strPrtOut1,strPrtOut2 = "H.S.T",'%0.2f'%hst
+printOutStr='|{0:>63} '.format(strPrtOut1) + '|{0:>12} |'.format(strPrtOut2)
+print(printOutStr)
+
+strPrtOut1,strPrtOut2 = "Sub total 2",'%0.2f'%subTotal_2
+printOutStr='|{0:>63} '.format(strPrtOut1) + '|{0:>12} |'.format(strPrtOut2)
+print(printOutStr)
+
+strPrtOut1 = "Discount (" + '%d'%discontPercentage + "%)"
+strPrtOut2 = '%0.2f'%discountAmount   # convert float to integer
+printOutStr='|{0:>63} '.format(strPrtOut1) + '|{0:>12} |'.format(strPrtOut2)
+print(printOutStr)
+
+strPrtOut1,strPrtOut2 = "Amount Due", '%0.2f'%(subTotal_2-discountAmount)
+printOutStr='|{0:>63} '.format(strPrtOut1) + '|{0:>12} |'.format(strPrtOut2)
+print(printOutStr)
+
+print("|==============================================================================|")

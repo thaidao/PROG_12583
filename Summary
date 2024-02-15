@@ -1,0 +1,18 @@
+Chapter 4
+comparison operators
+
+Boolean literals
+
+Boolean expressions
+
+object comparison
+x is y
+
+Conditional statements
+A second form of the if statement is alternative execution
+
+Chained conditionals:
+	Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a chained conditional
+
+Chapter 2
+Operators and operands

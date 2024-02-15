@@ -1,0 +1,15 @@
+= (assignment operator): 20
+== (equality comparison): 3
++= (increment assignment): 1
+" (double quotation mark): 24
+'' (single quotation mark): 1
+# (comment): 14
+() (parentheses): 44
+[] (square brackets): 20
+: (colon): 14
+, (comma): 62
+. (dot): 16
+_ (underscore): 2
+{} (curly braces): 8
+% (percent): 16
+/ (division operator): 5
