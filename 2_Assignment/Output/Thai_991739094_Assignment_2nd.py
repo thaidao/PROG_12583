@@ -11,7 +11,7 @@ MAX_RETRY_TIME  = 3         # number of retry time for user input
 MAX_PWD_LEN     = 8         # maximum length of user password
 
 # Message before terminating program.
-PROG_TERMINATE_MSG = "\nProgram is terminated. Sorry about this inconvenience"
+PROG_TERMINATE_MSG = "\n[Error] Program is terminated. Sorry about this inconvenience."
 
 # Verify User input function
 # Parameter:
@@ -47,20 +47,20 @@ print("================================")
 bNewCustomer = True
 iRetryTime = 0
 while iRetryTime < MAX_RETRY_TIME:
-    sCusAnswer = input("\n[%d]Are you new customer?\nPress y = Yes, n = No, q = Quit: "%(iRetryTime+1))    
+    sCusAnswer = input("\n[%d] Are you new customer?\nPress y = Yes, n = No, q = Quit: "%(iRetryTime+1))    
     # Convert to lower case
     sCusAnswer = sCusAnswer.lower()
     
     # Check customer answer
     if sCusAnswer == 'q':
-        print("I'am sorry let you go. See you again")
+        print("\nI'am sorry let you go. See you again")
         exit()
     elif sCusAnswer == 'y':
-        print("Please sign up new account.")
+        print("\nPlease sign up new account.")
         bNewCustomer = True
         break
     elif sCusAnswer == 'n':
-        print("Please sign in.")
+        print("\nPlease sign in with your account.")
         bNewCustomer = False
         break
     
@@ -87,7 +87,7 @@ while iRetryTime < MAX_RETRY_TIME:
             # if user name was existed, retry to input new name
             if bNewCustomer:
                 iRetryTime += 1
-                print("This username was existed, please select other name.")
+                print("[Error] This username was existed, please select other name.")
             else:
                 break
         else:
@@ -95,7 +95,7 @@ while iRetryTime < MAX_RETRY_TIME:
                 break
             else:
                 iRetryTime += 1
-                print("This user name was NOT existed, please type corrected user name.")
+                print("[Error] This user name was NOT existed, please type corrected user name.")
     
     # Terminate program condition
     if iRetryTime == MAX_RETRY_TIME:    
@@ -105,14 +105,14 @@ while iRetryTime < MAX_RETRY_TIME:
 # Input password
 iRetryTime = 0
 while iRetryTime < MAX_RETRY_TIME:
-    sCustomerPassword = input("Please input password[%d]\
+    sCustomerPassword = input("\nPlease input password[%d]\
                               \nYour password must contain digit only and 8 characters in maximum: "%(iRetryTime+1))    
     
     if sCustomerPassword.isdigit() and\
         len(sCustomerPassword) <= MAX_PWD_LEN:
         
         if bNewCustomer == True:
-            print("\nYour account has created sucessfully.")
+            print("Your account has created sucessfully.")
             print("\nHello %s. Welcome to the world of Canadian Products." % (sCustomerName))
             listCustomerName.append(sCustomerName)
             listCustomerPassword.append(sCustomerPassword)
@@ -125,9 +125,9 @@ while iRetryTime < MAX_RETRY_TIME:
                     print("\nHello %s. Welcome back." % (sCustomerName))
                     break
                 else:
-                    print("Password is not matched.")
+                    print("[Error] Password is not matched!!!")
     else:
-        print("Wrong password format.")
+        print("[Error] Wrong password format!!!")
 
     iRetryTime +=1
     # Terminate program
@@ -159,7 +159,7 @@ while iRetryTime < MAX_RETRY_TIME:
     iRetryTime += 1
     # Terminate program
     if iRetryTime == 3:
-        print("\nProgram is terminated. Sorry about this inconvenience.")
+        print("\n[Error] Program is terminated. Sorry about this inconvenience.")
         exit()
 
 
@@ -229,7 +229,7 @@ elif iSelService == 3:  #"Service and solutions"
         iCnt += 1
     print("This option is being underconstructed.")
 else:
-    print("This option is out of range.")
+    print("\n[Error] This option is out of range.")
 
 print("==============================")
 while True:
