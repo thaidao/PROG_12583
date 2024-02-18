@@ -4,6 +4,7 @@ MAX_PRODUCT     = 10
 MAX_RETRY_TIME  = 3
 MAX_PWD_LEN     = 8
 
+PROG_TERMINATE_MSG = "\nProgram is terminated. Sorry about this inconvenience"
 
 # Verify User input function
 # Parameter:
@@ -24,7 +25,7 @@ def verifyUserInput(sMsg):
         iRetryTime += 1
         # Terminate program
         if iRetryTime == MAX_RETRY_TIME:
-            print("Program is terminated. Sorry about this inconvenience")
+            print(PROG_TERMINATE_MSG)
             return 0
             
 #==================REQUIRMENT_1================================================
@@ -39,7 +40,7 @@ print("================================")
 bNewCustomer = True
 iRetryTime = 0
 while iRetryTime < MAX_RETRY_TIME:
-    sCusAnswer = input("[%d]Are you new customer?\nPress y = Yes, n = No, q = Quit:"%(iRetryTime+1))    
+    sCusAnswer = input("\n[%d]Are you new customer?\nPress y = Yes, n = No, q = Quit: "%(iRetryTime+1))    
     # Convert to lower case
     sCusAnswer = sCusAnswer.lower()
     
@@ -60,36 +61,38 @@ while iRetryTime < MAX_RETRY_TIME:
     iRetryTime += 1
     # Terminate program
     if iRetryTime == MAX_RETRY_TIME:
-        print("Program is terminated. Sorry about this inconvenience")
+        print(PROG_TERMINATE_MSG)
         exit()
     
 listCustomerName = ["Thai","Victor","Acash"]
 listCustomerPassword = ["11","22","33"]
 
 # Input customer name
-sCustomerName = input("Please tell us your name:")
-if sCustomerName not in listCustomerName and len(sCustomerName) > 0:
+sCustomerName = input("Please tell us your name: ")
 
-    sCusAnswer= input("%s is not existed. Do you want to sign up with this user?\n\rPress y = Yes, n = No:"\
-                      %(sCustomerName))
-    # Convert to lower case
-    sCusAnswer = sCusAnswer.lower()
-    if sCusAnswer == 'y':
-        bNewCustomer = True
-        #listCustomerName.append(sCustomerName)
-    else:
-        print("Program is terminated. Sorry about this inconvenience")
-        exit()
-else:
-    if bNewCustomer: # Sign up with the existed user
-        print("Program is terminated. Sorry about this inconvenience")
-        exit()
+# Handle case: user input the wrong exited customer name.
+if bNewCustomer == False:
+    if sCustomerName not in listCustomerName and len(sCustomerName) > 0:
+
+        sCusAnswer= input("\"%s\" is not existed. Do you want to sign up with this user?\n\rPress y = Yes, n = No: "\
+                          %(sCustomerName))
+        # Convert to lower case
+        sCusAnswer = sCusAnswer.lower()
+        if sCusAnswer == 'y':
+            bNewCustomer = True
+        else:
+            print(PROG_TERMINATE_MSG)
+            exit()
+# else:
+    # if bNewCustomer: # Sign up with the existed user
+        # print(PROG_TERMINATE_MSG)
+        # exit()
 
 # Input password
 iRetryTime = 0
 while iRetryTime < MAX_RETRY_TIME:
     sCustomerPassword = input("Please input password[%d]\
-                              \nYour password must contain digit only and 8 character in maximum:"%(iRetryTime+1))    
+                              \nYour password must contain digit only and 8 characters in maximum: "%(iRetryTime+1))    
     
     if sCustomerPassword.isdigit() and\
         len(sCustomerPassword) <= MAX_PWD_LEN:
@@ -114,7 +117,7 @@ while iRetryTime < MAX_RETRY_TIME:
     iRetryTime +=1
     # Terminate program
     if iRetryTime == MAX_RETRY_TIME:
-        print("Program is terminated. Sorry about this inconvenience")
+        print(PROG_TERMINATE_MSG)
         exit()
 
 # Show list of services
@@ -133,7 +136,7 @@ for sService in listMainServices:
 
 iRetryTime = 0
 while iRetryTime < MAX_RETRY_TIME:
-    sUserStrInput = input("Please select service:")
+    sUserStrInput = input("\nPlease select service: ")
     if sUserStrInput.isdigit():
         iSelService = int(sUserStrInput)
         break
@@ -141,7 +144,7 @@ while iRetryTime < MAX_RETRY_TIME:
     iRetryTime += 1
     # Terminate program
     if iRetryTime == 3:
-        print("Program is terminated. Sorry about this inconvenience.")
+        print("\nProgram is terminated. Sorry about this inconvenience.")
         exit()
 
 
@@ -159,7 +162,7 @@ if iSelService == 1: #"Order new product"
         print("[%d] %s." % (iCnt+1,listProductOrder[iCnt]))
         iCnt += 1
         
-    iTotalNumber = verifyUserInput("Input total number of product:")
+    iTotalNumber = verifyUserInput("\nInput total number of product: ")
     if iTotalNumber > 0:
         MAX_PRODUCT = 10
         if iTotalNumber > MAX_PRODUCT:
@@ -171,12 +174,12 @@ if iSelService == 1: #"Order new product"
             iCnt = 0
             listItems = []
             for iCnt in range(iTotalNumber):
-                iItemNum = verifyUserInput("Number of Item %d:"%(iCnt+1))                
+                iItemNum = verifyUserInput("Number of Item %d: "%(iCnt+1))                
                 if iItemNum > 0:
                     iCnt += 1
                     listItems.append(iItemNum)
                 else:
-                    print("Program is terminated. Sorry about this inconvenience.")
+                    print(PROG_TERMINATE_MSG)
                     exit()
                 
 elif iSelService == 2:  #"Customer request support"
@@ -212,7 +215,7 @@ else:
 
 print("==============================")
 while True:
-    sCusAnswer = input("Do you want to discovery more?\n\rPress y = Yes, n = No:")
+    sCusAnswer = input("\nDo you want to discovery more?\n\rPress y = Yes, n = No: ")
     
     # Convert to lower case
     sCusAnswer = sCusAnswer.lower()
