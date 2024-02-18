@@ -5,6 +5,7 @@ if iNumOfCnt.isdigit():
 else:
     exit()
 
+# Loop
 iCnt = 0
 while iCnt < iNumOfCnt:
     fCirArea, fPerimeter = input("Input area and perimeter of circle:").split(";")
