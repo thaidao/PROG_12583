@@ -1,9 +1,16 @@
+# PROG12583_Assignment 2nd
+# Flow diagram: 
+# https://docs.google.com/presentation/d/17k_kn_5RnHMEZGDfB4h8osobk2W65TnJsXwXCLT-_c0/edit?usp=sharing
+# Author: Dao Nam Thai - StudentID: 991739094  
+# Brief: 
+    
 # Initialize the variables and declare constants
 # Store information
-MAX_PRODUCT     = 10
-MAX_RETRY_TIME  = 3
-MAX_PWD_LEN     = 8
+MAX_PRODUCT     = 10        # maximum product items in stock
+MAX_RETRY_TIME  = 3         # number of retry time for user input        
+MAX_PWD_LEN     = 8         # maximum length of user password
 
+# Message before terminating program.
 PROG_TERMINATE_MSG = "\nProgram is terminated. Sorry about this inconvenience"
 
 # Verify User input function
@@ -44,7 +51,7 @@ while iRetryTime < MAX_RETRY_TIME:
     # Convert to lower case
     sCusAnswer = sCusAnswer.lower()
     
-    # Check condition
+    # Check customer answer
     if sCusAnswer == 'q':
         print("I'am sorry let you go. See you again")
         exit()
@@ -67,26 +74,33 @@ while iRetryTime < MAX_RETRY_TIME:
 listCustomerName = ["Thai","Victor","Acash"]
 listCustomerPassword = ["11","22","33"]
 
-# Input customer name
-sCustomerName = input("Please tell us your name: ")
-
-# Handle case: user input the wrong exited customer name.
-if bNewCustomer == False:
-    if sCustomerName not in listCustomerName and len(sCustomerName) > 0:
-
-        sCusAnswer= input("\"%s\" is not existed. Do you want to sign up with this user?\n\rPress y = Yes, n = No: "\
-                          %(sCustomerName))
-        # Convert to lower case
-        sCusAnswer = sCusAnswer.lower()
-        if sCusAnswer == 'y':
-            bNewCustomer = True
+# Handle input customer username
+iRetryTime = 0
+while iRetryTime < MAX_RETRY_TIME:
+        
+    # Input customer user name
+    sCustomerName = input("Please tell us username: ")
+    if len(sCustomerName) == 0:
+        iRetryTime += 1
+    else:
+        if sCustomerName in listCustomerName:
+            # if user name was existed, retry to input new name
+            if bNewCustomer:
+                iRetryTime += 1
+                print("This username was existed, please select other name.")
+            else:
+                break
         else:
-            print(PROG_TERMINATE_MSG)
-            exit()
-# else:
-    # if bNewCustomer: # Sign up with the existed user
-        # print(PROG_TERMINATE_MSG)
-        # exit()
+            if bNewCustomer:
+                break
+            else:
+                iRetryTime += 1
+                print("This user name was NOT existed, please type corrected user name.")
+    
+    # Terminate program condition
+    if iRetryTime == MAX_RETRY_TIME:    
+        print(PROG_TERMINATE_MSG)
+        exit()  
 
 # Input password
 iRetryTime = 0
@@ -99,13 +113,14 @@ while iRetryTime < MAX_RETRY_TIME:
         
         if bNewCustomer == True:
             print("\nYour account has created sucessfully.")
-            print("Hello %s. Welcome to the world of Canadian Products." % (sCustomerName))
+            print("\nHello %s. Welcome to the world of Canadian Products." % (sCustomerName))
             listCustomerName.append(sCustomerName)
             listCustomerPassword.append(sCustomerPassword)
             break
         else:
             if sCustomerName in listCustomerName:
                 idx = listCustomerName.index(sCustomerName)
+                # Verify password of existed user is corrected or not
                 if listCustomerPassword[idx] == sCustomerPassword:
                     print("\nHello %s. Welcome back." % (sCustomerName))
                     break
@@ -120,7 +135,7 @@ while iRetryTime < MAX_RETRY_TIME:
         print(PROG_TERMINATE_MSG)
         exit()
 
-# Show list of services
+# Show main list of services
 listMainServices = ["Order new product",\
                     "Customer request support",\
                     "Service and solution" ]
@@ -167,7 +182,8 @@ if iSelService == 1: #"Order new product"
         MAX_PRODUCT = 10
         if iTotalNumber > MAX_PRODUCT:
             print("We are sorry, only %d available items"%(MAX_PRODUCT))
-            #to be define
+            print(PROG_TERMINATE_MSG)
+            exit()
         else:
             
             # Input number of items
@@ -181,6 +197,8 @@ if iSelService == 1: #"Order new product"
                 else:
                     print(PROG_TERMINATE_MSG)
                     exit()
+                    
+            print("Transit to payment process ... ")
                 
 elif iSelService == 2:  #"Customer request support"
     listCusReqSupport = ["Pickup & Delivery",\
@@ -221,13 +239,13 @@ while True:
     sCusAnswer = sCusAnswer.lower()
 
     if sCusAnswer == 'y':
-        print("Love to hear that, but now all product are out of stock.")
+        print("\nLove to hear that, but now all product are out of stock.")
         break
     elif sCusAnswer ==  'n':
-        print("Alright, sad to see you go.")
+        print("\nAllright, sad to see you go.")
         break
     else:
-        print("I didn't get your point.")
+        print("\nI didn't get your point.")
         break
     
 print("Have a good day!!!")
