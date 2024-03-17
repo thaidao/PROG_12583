@@ -1,3 +1,7 @@
+# PROG12583_Assignment 3rd
+# Author: Dao Nam Thai - StudentID: 991739094
+# Brief: Implementation of "The game of Nim"
+
 import random
 
 # Initial game config [stick,files,sticklose]
