@@ -1,21 +1,21 @@
 import random
 
-# Initial game config [stick,files,sticklose]]
-STICK_NUM_INDEX = 0         #index of stick in configuration list
-PILE_NUM_INDEX = 1          #index of pile in configuration list
-STICKLOSE_NUM_INDEX = 2     #index of sticklose in configuration list
+# Initial game config [stick,files,sticklose]
+STICK_NUM_INDEX = 0         # index of stick in configuration list
+PILE_NUM_INDEX = 1          # index of pile in configuration list
+STICKLOSE_NUM_INDEX = 2     # index of sticklose in configuration list
 
-STICK_NUM_DEFAULT = 10      #defaul value of stick
-PILE_NUM_DEFAULT = 5        #defaul value of pile
-STICKLOSE_NUM_DEFAULT = 0   #defaul value of stick lose
+STICK_NUM_DEFAULT = 10      # default value of stick
+PILE_NUM_DEFAULT = 5        # default value of pile
+STICKLOSE_NUM_DEFAULT = 0   # default value of stick lose
 
-STICK_NUM_MAX = 20
-PILE_NUM_MAX = 20
+STICK_NUM_MAX = 20          # maximum number of stick in one file
+PILE_NUM_MAX = 20           # maximum number of file
 
 # Default Game configuration
 g_GameConfig = [STICK_NUM_DEFAULT,PILE_NUM_DEFAULT,STICKLOSE_NUM_DEFAULT]
 
-# convert from string to integer
+# Convert from string to positive integer and validate it
 def convertStrToInt(in_str):
     if in_str.isdigit():
         resVal = int(in_str)
@@ -54,7 +54,7 @@ def initializeGameConfig():
             retry_cnt += 1
             if retry_cnt == 3:
                 print("[ERR] You entered wrong input over 3 times.")
-                print("Let play with random initial configuration.")
+                print("Let's play with a random initial configuration.")
                 break;
 
     return initGameConfig
@@ -96,7 +96,7 @@ def playerMove(piles):
         else:
             print("[ERR] Invalid pile number!")
 
-# computer's move
+# Computer's move
 def computerMove(piles):
 
     pile = 0
@@ -113,6 +113,7 @@ def gameOver(piles):
     # if all of sticks in piles are removed, return true
     return all(sticks == 0 for sticks in piles)
 
+#==================MAIN PROGRAM================================================
 # Main function
 def main():
     print("Welcome to the game of Nim!")
