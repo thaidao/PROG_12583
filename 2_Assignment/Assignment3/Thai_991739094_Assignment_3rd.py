@@ -39,7 +39,7 @@ def initializeGameConfig():
         usrInput = input("Choose number of pile(2~%d): "%(PILE_NUM_MAX))
         numPile = convertStrToInt(usrInput)
     
-        usrInput = input("Choose maximum number of stick(1~%d): "%(STICK_NUM_MAX))
+        usrInput = input("Choose maximum number of stick in one pile(1~%d): "%(STICK_NUM_MAX))
         numStick = convertStrToInt(usrInput)
 
         #usrInput = input("Choose number of last sticks lose: ")
@@ -68,6 +68,17 @@ def initializePiles(gameConfig):
     # Initialize the piles with random number of stick. STICK_NUM_INDEX
     return [random.randint(1, gameConfig[STICK_NUM_INDEX]) for _ in range(gameConfig[PILE_NUM_INDEX])]
 
+# Check if the game is over.
+def gameOver(piles):
+    
+    for stick in piles:
+        if stick != 0:
+            return False
+    
+    # if all of sticks in piles are removed, return true
+    return True
+    #return all(sticks == 0 for sticks in piles)
+
 # Print the current state of the piles.
 def printPiles(piles):
     print("Current piles:")
@@ -81,25 +92,6 @@ def printPiles(piles):
         # New line
         print()
 
-# Allow the player to make a move.
-def playerMove(piles):
-    while True:
-        printPiles(piles)
-        pile = int(input("Select a pile (1, 2, 3, etc.Max=%d): "%(len(piles)))) - 1
-        if 0 <= pile < len(piles):
-            if piles[pile] == 0:
-                print("[ERR] No stick in this pile. Please choose anothers!")
-                continue
-
-            sticks_to_remove = int(input("How many sticks do you want to remove(Max=%d)? "%(piles[pile])))
-            if 1 <= sticks_to_remove <= piles[pile]:
-                piles[pile] -= sticks_to_remove
-                break
-            else:
-                print("[ERR] Invalid number of sticks!")
-        else:
-            print("[ERR] Invalid pile number!")
-
 # Computer's move
 def computerMove(piles):
 
@@ -109,13 +101,47 @@ def computerMove(piles):
         pile = random.randint(0, len(piles) - 1)
 
     sticks_to_remove = random.randint(1, piles[pile])
-    print(f"Computer removes {sticks_to_remove} sticks from pile {pile+1}")
+    print(f"Computer removed {sticks_to_remove} sticks from pile {pile+1}")
     piles[pile] -= sticks_to_remove
 
-# Check if the game is over.
-def gameOver(piles):
-    # if all of sticks in piles are removed, return true
-    return all(sticks == 0 for sticks in piles)
+# Allow the player to make a move.
+def playerMove(piles):
+    while True:
+        printPiles(piles)
+
+        usr_input = input("Select a pile (1, 2, 3, etc.Max=%d): "%(len(piles)))
+        pile = convertStrToInt(usr_input)
+        if pile == -1 or pile == 0:
+            print("Invalid input number!")
+            continue
+        
+        # pile = int(input("Select a pile (1, 2, 3, etc.Max=%d): "%(len(piles)))) - 1
+        # pile >= 1
+        pile = pile -1
+
+        if 0 <= pile < len(piles):
+            if piles[pile] == 0:
+                print("[ERR] No stick in this pile. Please choose anothers!")
+                continue
+
+            #sticks_to_remove = int(input("How many sticks do you want to remove(Max=%d)? "%(piles[pile])))
+            while True:
+                usr_input = input("How many sticks do you want to remove(Max=%d)? "%(piles[pile]))
+                sticks_to_remove = convertStrToInt(usr_input)
+                if sticks_to_remove != -1:
+                    break
+                else:
+                    print("Invalid input number!")
+                    continue
+            
+            # Decrease the stick in piles
+            if 1 <= sticks_to_remove <= piles[pile]:
+                piles[pile] -= sticks_to_remove
+                break
+            else:
+                print("[ERR] Invalid number of sticks!")
+        else:
+            print("[ERR] Invalid pile number!")
 
 #==================MAIN PROGRAM================================================
 # Main function
@@ -132,13 +158,19 @@ def main():
 
         # Main processing
         while not gameOver(piles):
+            # Ask player move
             playerMove(piles)
             if gameOver(piles):
-                print("Congratulations! You win!")
+                print("Amazing! You won!")
                 break
+
+            # Computer move
+            print()
             computerMove(piles)
+
+            # Checking the game is over or not
             if gameOver(piles):
-                print("Sorry, the computer wins!")
+                print("Sorry, the computer won!")
                 break
         
         usrInput = input("Do you want play more (Y/N):")
