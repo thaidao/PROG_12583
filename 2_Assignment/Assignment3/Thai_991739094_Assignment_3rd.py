@@ -77,7 +77,6 @@ def gameOver(piles):
     
     # if all of sticks in piles are removed, return true
     return True
-    #return all(sticks == 0 for sticks in piles)
 
 # Print the current state of the piles.
 def printPiles(piles):
@@ -146,7 +145,9 @@ def playerMove(piles):
 #==================MAIN PROGRAM================================================
 # Main function
 def main():
-    print("Welcome to the game of Nim!")
+    print("=================================")
+    print("|| Welcome to the game of Nim! ||")
+    print("=================================")
 
     # Main loop
     while True:  
