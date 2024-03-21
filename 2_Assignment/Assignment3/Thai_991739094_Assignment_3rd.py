@@ -44,7 +44,7 @@ def initializeGameConfig():
 
     while True:
         # Setting game mode
-        usrInput = input("Choose game mode(0:single, 1:multiple):")
+        usrInput = input("Choose game mode(0:single player, 1:multiple players):")
         gameMode = convertStrToInt(usrInput)
 
         # User input
