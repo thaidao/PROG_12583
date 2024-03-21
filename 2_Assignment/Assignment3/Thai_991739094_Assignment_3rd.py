@@ -5,19 +5,26 @@
 import random
 
 # Initial game config [stick,files,sticklose]
-STICK_NUM_INDEX = 0         # index of stick in configuration list
-PILE_NUM_INDEX = 1          # index of pile in configuration list
-STICKLOSE_NUM_INDEX = 2     # index of sticklose in configuration list
+STICK_NUM_INDEX         = 0     # index of stick in configuration list
+PILE_NUM_INDEX          = 1     # index of pile in configuration list
+STICKLOSE_NUM_INDEX     = 2     # index of sticklose in configuration list
+GAME_MODE               = 3     # single mode or multiplayers mode
 
-STICK_NUM_DEFAULT = 10      # default value of stick
-PILE_NUM_DEFAULT = 5        # default value of pile
-STICKLOSE_NUM_DEFAULT = 0   # default value of stick lose
+STICK_NUM_DEFAULT       = 10    # default value of stick
+PILE_NUM_DEFAULT        = 5     # default value of pile
+STICKLOSE_NUM_DEFAULT   = 0     # default value of stick lose
 
-STICK_NUM_MAX = 20          # maximum number of stick in one file
-PILE_NUM_MAX = 20           # maximum number of file
+STICK_NUM_MAX           = 20    # maximum number of stick in one file
+PILE_NUM_MAX            = 20    # maximum number of file
+
+GAME_MODE_SINGLE        = 0     # single player mode, with computer
+GAME_MODE_MULIPLAYERS   = 1     # multiple players
+
+MSG_PLAYER1             = 1     # congratulation message for player 1st
+MSG_PLAYER2             = 2     # congratulation message for playe 2nd/computer
 
 # Default Game configuration
-g_GameConfig = [STICK_NUM_DEFAULT,PILE_NUM_DEFAULT,STICKLOSE_NUM_DEFAULT]
+g_GameConfig = [STICK_NUM_DEFAULT,PILE_NUM_DEFAULT,STICKLOSE_NUM_DEFAULT,GAME_MODE_SINGLE]
 
 # Convert from string to positive integer and validate it
 def convertStrToInt(in_str):
@@ -26,6 +33,7 @@ def convertStrToInt(in_str):
         if resVal >= 0:
             return resVal
 
+    # Exception
     return -1
 
 # Initialize general game configuration
@@ -35,6 +43,10 @@ def initializeGameConfig():
     retry_cnt = 0
 
     while True:
+        # Setting game mode
+        usrInput = input("Choose game mode(0:single, 1:multiple):")
+        gameMode = convertStrToInt(usrInput)
+
         # User input
         usrInput = input("Choose number of pile(2~%d): "%(PILE_NUM_MAX))
         numPile = convertStrToInt(usrInput)
@@ -47,11 +59,13 @@ def initializeGameConfig():
 
         if numStick in range(1,STICK_NUM_MAX+1) and\
             numPile in range(2,PILE_NUM_MAX+1) and\
-            numStickLose >= 0:
+            numStickLose >= 0 and\
+            gameMode in range(0,2):
 
             initGameConfig[STICK_NUM_INDEX] = numStick
             initGameConfig[PILE_NUM_INDEX] = numPile
             initGameConfig[STICKLOSE_NUM_INDEX] = numStickLose
+            initGameConfig[GAME_MODE] = gameMode
             break
         else:
             print("[ERR] Invalid input number!")
@@ -91,6 +105,16 @@ def printPiles(piles):
         # New line
         print()
 
+# print the congratation message
+def printCongratMessage(msg_type):
+    if msg_type == MSG_PLAYER1:
+        print("Amazing, Player 1st won!")
+    else:
+        if g_GameConfig[GAME_MODE] == GAME_MODE_SINGLE:
+            print("Sorry, the computer won!")
+        elif g_GameConfig[GAME_MODE] == GAME_MODE_MULIPLAYERS:
+            print("Congratulation, Player 2nd won!")
+
 # Computer's move
 def computerMove(piles):
 
@@ -106,8 +130,11 @@ def computerMove(piles):
 # Allow the player to make a move.
 def playerMove(piles):
     while True:
-        printPiles(piles)
 
+        # Print the current piles
+        #printPiles(piles)
+
+        # Ask user selecting the pile
         usr_input = input("Select a pile (1, 2, 3, etc.Max=%d): "%(len(piles)))
         pile = convertStrToInt(usr_input)
         if pile == -1 or pile == 0:
@@ -157,22 +184,37 @@ def main():
         # Initialize files
         piles = initializePiles(g_GameConfig)
 
+        # Print the current piles
+        printPiles(piles)
+
         # Main processing
         while not gameOver(piles):
             # Ask player move
+            print("Player 1st turn")
             playerMove(piles)
             if gameOver(piles):
-                print("Amazing! You won!")
+                #print("Amazing! You won!")
+                printCongratMessage(MSG_PLAYER1)
                 break
 
-            # Computer move
             print()
-            computerMove(piles)
+            printPiles(piles)
+            if g_GameConfig[GAME_MODE] == GAME_MODE_SINGLE:
+                # Computer move
+                print("Computer turn.")
+                computerMove(piles)
+            elif g_GameConfig[GAME_MODE] == GAME_MODE_MULIPLAYERS:
+                # Ask player 2nd move
+                print("Player 2nd turn.")
+                playerMove(piles)
 
             # Checking the game is over or not
             if gameOver(piles):
-                print("Sorry, the computer won!")
+                #print("Sorry, the computer won!")
+                printCongratMessage(MSG_PLAYER2)
                 break
+
+            printPiles(piles)
         
         usrInput = input("Do you want play more (Y/N):")
         usrInput = usrInput.lower()
